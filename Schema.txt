@@ -1,0 +1,204 @@
+drop table payment;
+drop table transfer;
+drop table credit_debit;
+drop table method;
+drop table select_amenity;
+drop table apt_private;
+drop table prop_common;
+drop table common_amenity;
+drop table private_amenity;
+drop table amenity;
+drop table tenant;
+drop table lease;
+drop table person;
+drop table pet;
+drop table visits;
+drop table prospect_tenant;
+drop table apartment;
+drop table property;
+
+
+
+create table property(
+    prop_id char(5) not null, 
+    address varchar(20) not null, 
+    primary key(prop_id),
+    check(REGEXP_LIKE(prop_id, '^[[:digit:]]+$'))
+);
+
+
+
+create table apartment(
+    prop_id char(5) not null,
+    apt_id char(5) not null, 
+    apt_size numeric(7,2) not null,
+    bedroom_num int not null, 
+    bathroom_num int not null,
+    primary key(prop_id, apt_id),
+    foreign key(prop_id) references property(prop_id),
+    check(REGEXP_LIKE(apt_id, '^[[:digit:]]+$'))
+);
+
+
+
+create table prospect_tenant(
+    id char(5) not null,
+    name varchar(20) not null,
+    date_of_birth varchar(20) not null,
+    primary key(id),
+    check(REGEXP_LIKE(id, '^[[:digit:]]+$'))
+);
+
+
+
+
+create table visits(
+    prop_id char(5) not null,
+    tenent_id char(5) not null,
+    primary key(prop_id, tenent_id),
+    foreign key(tenent_id) references prospect_tenant(id),
+    foreign key(prop_id) references property(prop_id)
+);
+
+
+
+create table pet(
+    id char(5) not null,
+    species varchar(20) not null,
+    vaccination varchar(20) not null,
+    primary key(id),
+    foreign key(id) references prospect_tenant(id)
+);
+
+
+
+create table person(
+    id char(5) not null,
+    month_income numeric(7,2) not null,
+    rental_history varchar(20) not null,
+    crime_history varchar(20) not null,
+    primary key(id),
+    foreign key(id) references prospect_tenant(id)
+);
+
+
+
+create table lease(
+    lease_id char(5) not null,
+    prop_id char(5) not null,
+    apt_id char(5) not null,
+    term int not null,
+    start_date DATE not null,
+    rent numeric(7,2) not null,
+    deposit numeric(7,2) not null,
+    primary key(lease_id),
+    foreign key(prop_id,apt_id) references apartment(prop_id, apt_id),
+    unique(prop_id, apt_id),
+    check(REGEXP_LIKE(lease_id, '^[[:digit:]]+$'))
+);
+
+
+create table tenant(
+    id char(5) not null,
+    lease_id char(5) not null,
+    ssn numeric(9,0) not null,
+    primary key(id),
+    foreign key(id) references person(id),
+    foreign key(lease_id) references lease(lease_id),
+    unique(ssn)
+);
+
+create table amenity(
+    amenity_id char(5) not null,
+    description varchar(20) not null,
+    cost numeric(7,2) not null,
+    primary key(amenity_id),
+    check(REGEXP_LIKE(amenity_id, '^[[:digit:]]+$'))
+);
+
+create table common_amenity(
+    amenity_id char(5) not null,
+    hour int not null,
+    capacity int not null,
+    primary key(amenity_id),
+    foreign key(amenity_id) references amenity(amenity_id)
+
+);
+
+create table private_amenity(
+    amenity_id char(5) not null,
+    feature varchar(20) not null,
+    warranty varchar(20) not null,
+    primary key(amenity_id),
+    foreign key(amenity_id) references amenity(amenity_id)
+
+);
+
+create table prop_common(
+    amenity_id char(5) not null,
+    prop_id char(5) not null,
+    primary key(amenity_id, prop_id),
+    foreign key(amenity_id) references amenity(amenity_id),
+    foreign key(prop_id) references property(prop_id)
+);
+
+create table apt_private(
+    amenity_id char(5) not null,
+    prop_id char(5) not null,
+    apt_id char(5) not null,
+    primary key(amenity_id, prop_id),
+    foreign key(amenity_id) references amenity(amenity_id),
+    foreign key(prop_id, apt_id) references apartment(prop_id, apt_id)
+);
+
+create table select_amenity(
+    amenity_id char(5) not null,
+    lease_id char(5) not null,
+    primary key(amenity_id, lease_id),
+    foreign key(amenity_id) references amenity(amenity_id),
+    foreign key(lease_id) references lease(lease_id)
+);
+
+
+create table method(
+    method_id char(5) not null,
+    description varchar(20) not null,
+    primary key(method_id),
+    check(REGEXP_LIKE(method_id, '^[[:digit:]]+$'))
+);
+
+
+create table credit_debit(
+    method_id char(5) not null,
+    card_number numeric(16,0) not null,
+    card_name varchar(20) not null,
+    expire_date DATE not null,
+    bill_address varchar(20) not null,
+    primary key(method_id),
+    foreign key(method_id) references method(method_id)
+);
+
+create table transfer(
+    method_id char(5) not null,
+    account_number numeric(12,0) not null,
+    bank_name varchar(20) not null,
+    routing_number numeric(9,0) not null,
+    reference_number varchar(20) not null,
+    primary key(method_id),
+    foreign key(method_id) references method(method_id),
+    CHECK (REGEXP_LIKE(reference_number, '^[A-Z0-9]{8,20}$'))
+);
+
+
+create table payment(
+    payment_id char(5) not null,
+    lease_id char(5) not null,
+    method_id char(5) not null,
+    payment_date DATE not null,
+    amount numeric(7,2) not null,
+    primary key(payment_id),
+    foreign key(lease_id) references lease(lease_id),
+    foreign key(method_id) references method(method_id),
+    unique(method_id),
+    check(REGEXP_LIKE(payment_id, '^[[:digit:]]+$'))
+);

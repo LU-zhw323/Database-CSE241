@@ -1,0 +1,55 @@
+
+TITLE                                              SEMEST       YEAR BUILDING       
+-------------------------------------------------- ------ ---------- ---------------
+Electricity and Magnetism                          Fall         2001 Wrigley        
+Monetary Theory                                    Fall         2001 Butler         
+Monetary Theory                                    Fall         2001 Mercer         
+Cat Herding                                        Spring       2001 Mercer         
+Cat Herding                                        Spring       2001 Sealey         
+Electricity and Magnetism                          Spring       2001 Butler         
+Environmental Law                                  Spring       2001 Stabler        
+Game Programming                                   Spring       2001 Main           
+Game Programming                                   Spring       2001 Main           
+Monetary Theory                                    Spring       2001 Brodhead       
+Monetary Theory                                    Fall         2002 Neville        
+
+TITLE                                              SEMEST       YEAR BUILDING       
+-------------------------------------------------- ------ ---------- ---------------
+Music of the 50s                                   Fall         2002 Candlestick    
+Game Programming                                   Fall         2003 Mercer         
+The Music of Donovan                               Fall         2003 Main           
+Cat Herding                                        Spring       2003 Packard        
+Cat Herding                                        Spring       2003 Main           
+Music of the 50s                                   Fall         2004 Gates          
+Electricity and Magnetism                          Spring       2004 Candlestick    
+Environmental Law                                  Spring       2004 Mercer         
+Music of the 50s                                   Spring       2004 Drown          
+Cat Herding                                        Fall         2005 Lamberton      
+Monetary Theory                                    Spring       2005 Lamberton      
+
+TITLE                                              SEMEST       YEAR BUILDING       
+-------------------------------------------------- ------ ---------- ---------------
+Music of the 50s                                   Spring       2005 Candlestick    
+Environmental Law                                  Fall         2006 Brodhead       
+International Trade                                Fall         2006 Sealey         
+The Music of Donovan                               Spring       2006 Butler         
+Environmental Law                                  Fall         2007 Mercer         
+Monetary Theory                                    Spring       2007 Packard        
+Monetary Theory                                    Fall         2008 Steps          
+Game Programming                                   Spring       2008 Mercer         
+International Trade                                Fall         2009 Sealey         
+Monetary Theory                                    Fall         2009 Rauch          
+The Music of Donovan                               Fall         2009 Mercer         
+
+TITLE                                              SEMEST       YEAR BUILDING       
+-------------------------------------------------- ------ ---------- ---------------
+Cat Herding                                        Spring       2009 Whitman        
+Monetary Theory                                    Spring       2009 Candlestick    
+Monetary Theory                                    Fall         2010 Packard        
+The Music of Donovan                               Fall         2010 Wrigley        
+Cat Herding                                        Spring       2010 Butler         
+Cat Herding                                        Spring       2010 Watson         
+Monetary Theory                                    Spring       2010 Lamberton      
+
+ÒÑÑ¡Ôñ 40 ÐÐ¡£
+
